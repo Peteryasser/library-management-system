@@ -12,6 +12,8 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem 'jsonapi-serializer', '~> 2.2'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
