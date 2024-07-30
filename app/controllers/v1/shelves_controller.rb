@@ -51,6 +51,6 @@ class V1::ShelvesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def shelf_params
-    params.require(:shelf).permit(:capacity, :code)
+    params.require(:shelf).permit(:capacity, :code, :number_of_books)
   end
 end
