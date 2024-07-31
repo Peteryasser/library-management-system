@@ -1,8 +1,8 @@
 class Shelf < ApplicationRecord
-
+  has_many :books
   validates :code, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-  validates :number_of_books, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: :capacity}
+  validates :number_of_books, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: :capacity, on: :update} 
 
   validate :prevent_number_of_books_update, on: :update
 

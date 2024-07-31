@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: one
+  category: one
+  shelf: one
+  rating: 1.5
+  review_count: 1
+  stock: 1
+
+two:
+  title: MyString
+  author: two
+  category: two
+  shelf: two
+  rating: 1.5
+  review_count: 1
+  stock: 1

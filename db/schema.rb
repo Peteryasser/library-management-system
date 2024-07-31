@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_30_144712) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_30_154455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_30_144712) do
     t.date "date_of_birth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.bigint "author_id", null: false
+    t.bigint "shelf_id", null: false
+    t.float "rating", default: 0.0
+    t.integer "review_count", default: 0
+    t.integer "stock", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["shelf_id"], name: "index_books_on_shelf_id"
+  end
+
+  create_table "books_categories", id: false, force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["book_id", "category_id"], name: "index_books_categories_on_book_id_and_category_id", unique: true
+    t.index ["category_id", "book_id"], name: "index_books_categories_on_category_id_and_book_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -36,4 +56,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_30_144712) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "authors"
+  add_foreign_key "books", "shelves"
 end
