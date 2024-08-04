@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     resources :shelves
     resources :categories
     resources :books
+    devise_for :users, controllers: {
+      registrations: 'v1/users/registrations',
+      sessions: 'v1/users/sessions',
+      passwords: 'v1/users/passwords'
+
+    }
+    post 'users/verify_otp', to: 'users/confirmations#create'
 
   end 
 

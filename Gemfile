@@ -14,6 +14,10 @@ gem "puma", ">= 5.0"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'jsonapi-serializer', '~> 2.2'
+gem 'devise', '~> 4.9', '>= 4.9.4'
+gem 'jwt', '~> 2.8', '>= 2.8.2'
+gem 'rotp', '~> 6.3'
+gem 'byebug', '~> 11.1', '>= 11.1.3'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
