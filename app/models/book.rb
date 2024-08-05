@@ -13,6 +13,15 @@ class Book < ApplicationRecord
   after_destroy :decrement_shelf_book_count
   before_update :update_shelf_book_count
 
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["author_id", "created_at", "id", "id_value", "rating", "review_count", "shelf_id", "stock", "title", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["author", "categories", "shelf"]
+  end
+  
   private
 
   def categories_limit

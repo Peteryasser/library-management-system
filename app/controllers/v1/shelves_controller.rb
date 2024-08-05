@@ -4,7 +4,7 @@ class V1::ShelvesController < ApplicationController
 
   # GET /v1/shelves
   def index
-    @shelves = Shelf.page(params[:page]).per(params[:per_page])
+    @shelves = Shelf.includes(:books).page(params[:page]).per(params[:per_page])
     render json: {
       Shleves: ShelfSerializer.new(@shelves).serializable_hash,
       pagination: pagination_metadata(@shelves)
@@ -46,7 +46,7 @@ class V1::ShelvesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_shelf
-    @shelf = Shelf.find(params[:id])
+    @shelf = Shelf.includes(:books).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

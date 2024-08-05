@@ -3,9 +3,10 @@ class V1::BooksController < ApplicationController
 
   # GET /v1/books
   def index
-    @books = Book.page(params[:page]).per(params[:per_page])
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).includes(:author, :categories, :shelf).page(params[:page]).per(params[:per_page])
     render json: {
-      Categories: BookSerializer.new(@books).serializable_hash,
+      Books: BookSerializer.new(@books).serializable_hash,
       pagination: pagination_metadata(@books)
     }
   end

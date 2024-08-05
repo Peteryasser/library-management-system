@@ -18,6 +18,7 @@ gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'jwt', '~> 2.8', '>= 2.8.2'
 gem 'rotp', '~> 6.3'
 gem 'byebug', '~> 11.1', '>= 11.1.3'
+gem 'ransack', '~> 4.2'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]

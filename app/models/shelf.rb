@@ -6,6 +6,10 @@ class Shelf < ApplicationRecord
 
   validate :prevent_number_of_books_update, on: :update
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["capacity", "code", "id", "number_of_books"]
+  end
+
   def prevent_number_of_books_update
     if self.number_of_books_changed?
       self.errors.add(:base, 'Cannot change the number_of_books directly')
