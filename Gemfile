@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.0.0"
+ruby "3.3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -19,6 +19,8 @@ gem 'jwt', '~> 2.8', '>= 2.8.2'
 gem 'rotp', '~> 6.3'
 gem 'byebug', '~> 11.1', '>= 11.1.3'
 gem 'ransack', '~> 4.2'
+gem 'sidekiq', '~> 7.3'
+gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.6'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]

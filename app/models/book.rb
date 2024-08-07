@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :author
   belongs_to :shelf
   has_and_belongs_to_many :categories
+  has_many :borrowings
+  has_many :borrowers, through: :borrowings, source: :user
 
 
   validates :title, presence: true

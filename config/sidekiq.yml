@@ -1,0 +1,12 @@
+:concurrency: 5
+:queues:
+  - default
+
+:scheduler:
+  :schedule:
+    reminder_job:
+      cron: "0 0 * * *" # Every day at midnight
+      class: "ReminderJob"
+    overdue_job:
+      cron: "0 0 * * *" # Every day at midnight
+      class: "OverdueJob"

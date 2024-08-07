@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_04_093043) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_07_090617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_04_093043) do
     t.bigint "category_id", null: false
     t.index ["book_id", "category_id"], name: "index_books_categories_on_book_id_and_category_id", unique: true
     t.index ["category_id", "book_id"], name: "index_books_categories_on_category_id_and_book_id"
+  end
+
+  create_table "borrowings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.integer "status"
+    t.date "approved_date"
+    t.date "return_date"
+    t.integer "number_of_days"
+    t.boolean "is_returned_on_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "approved_by_id"
+    t.index ["approved_by_id"], name: "index_borrowings_on_approved_by_id"
+    t.index ["book_id"], name: "index_borrowings_on_book_id"
+    t.index ["user_id"], name: "index_borrowings_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -86,4 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_04_093043) do
 
   add_foreign_key "books", "authors"
   add_foreign_key "books", "shelves"
+  add_foreign_key "borrowings", "books"
+  add_foreign_key "borrowings", "users"
+  add_foreign_key "borrowings", "users", column: "approved_by_id"
 end

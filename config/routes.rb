@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :shelves
     resources :categories
     resources :books
+    resources :borrowings
     devise_for :users, controllers: {
       registrations: 'v1/users/registrations',
       sessions: 'v1/users/sessions',
