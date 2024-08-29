@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   has_many :borrowings
   has_many :borrowed_books, through: :borrowings, source: :book
+  has_many :reviews
   enum status: { signin: 0, signout: 1 }
   enum role: { regular_user: 0, library_admin: 1 }
 

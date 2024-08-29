@@ -4,6 +4,8 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :borrowings
   has_many :borrowers, through: :borrowings, source: :user
+  has_many :reviews, dependent: :destroy
+
 
 
   validates :title, presence: true
@@ -22,6 +24,12 @@ class Book < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["author", "categories", "shelf"]
+  end
+
+  def update_rating_and_review_count
+    self.review_count = reviews.count
+    self.rating = reviews.average(:rating).to_f.round(2)
+    save
   end
   
   private
